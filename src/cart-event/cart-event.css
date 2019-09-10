@@ -1,0 +1,43 @@
+.cart-item{
+    width: 100%;
+  box-sizing: border-box;
+  padding: 40px 20px;
+}
+
+.cart-item__title{
+font-size: 30px;
+font-weight: 700; 
+text-align: center;
+margin-bottom: 30px;
+line-height: 37px;
+
+
+}
+
+.cart-item__price {
+font-size: 16px;
+color:#000000;
+ 
+} 
+.cart-item__price span{
+       color:tomato;
+
+}
+.cart-item__text{
+    font-size: 20px;
+    line-height: 23px;
+}
+
+
+.cart-item__age{
+    display: block;
+    font-size: 16px;
+    color:#000000;
+    float: right;
+
+}
+.cart-item__age span{
+    color:tomato;
+
+
+}

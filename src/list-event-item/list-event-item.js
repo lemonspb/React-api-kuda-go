@@ -1,14 +1,17 @@
 import React,{ useEffect, useState } from 'react';
-import './list.css'
+import './list-event-item.css';
+
+const ListItem = ({name,description,image, placeId,id, onItemSelected})=>{
 
 
-const List = ({name,description,image, placeId,id,onItemSelected})=>{
 
-    const BASE_URL = "https://kudago.com/public-api/v1.4/";
+  const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     useEffect( () => {
-      
+      if(!placeId){
         getPlace();
+      }
+        
       
       
     }, [] );
@@ -40,13 +43,7 @@ return (
 
     </div>
 )
-
-
-
-
-
-
 }
 
 
-export default List
+export default ListItem
