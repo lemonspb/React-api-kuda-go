@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import ListItem from '../list-event-item';
 import { withRouter } from 'react-router-dom';
-
+import Spinner from '../spinner'
 const List = ({history})=>{
 
 
@@ -11,12 +11,13 @@ const List = ({history})=>{
 
 
   useEffect(() => {
-    getEvents();
-    
+    getEvents()
+      
     
   }, []);
 
   const  [ events, setEvents] = useState([]);
+  const  [ loading , setLoaing] = useState(true);
 
   const getEvents = () => {
     fetch(
@@ -28,12 +29,18 @@ const List = ({history})=>{
       const data = await response.json();
 
       setEvents(data.results);
+      setLoaing(false)
+
       console.log(data.results)
     });
 
 
 
   };
+  if(loading){
+return <Spinner />
+
+  }
 
 
 return (

@@ -1,30 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import './cart-event.css'
+import Spinner from '../spinner'
+import GoogleMapReact from 'google-map-react';
 
 const CartEvent = ({selectId})=>{
     const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     useEffect(() => {
-      getEventsId();
+    async function getEventsId(){
+       await fetch(
+          `${BASE_URL}/events/${selectId}/`
+        ).then(async response => {
+          if (response.status !== 200) {
+            return;
+          }
+          const data = await response.json();
+    
+          setIdEvents(data);
+          setLoaing(false)
+          console.log(data)
+        });
+      };
+      getEventsId()
     },[]);
   
     const  [ idEvents, setIdEvents] = useState({});
-    const getEventsId = () => {
-      fetch(
-        `${BASE_URL}/events/${selectId}/`
-      ).then(async response => {
-        if (response.status !== 200) {
-          return;
-        }
-        const data = await response.json();
-  
-        setIdEvents(data);
-        console.log(data)
-      });
-    };
-  
+    const  [ loading , setLoaing] = useState(true);
 
-  
+
+    if(loading){
+      return <Spinner />
+      
+        }
     
 
 return (

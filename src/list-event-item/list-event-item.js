@@ -8,9 +8,8 @@ const ListItem = ({name,description,image, placeId,id, onItemSelected})=>{
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     useEffect( () => {
-      if(!placeId){
         getPlace();
-      }
+      
         
       
       
