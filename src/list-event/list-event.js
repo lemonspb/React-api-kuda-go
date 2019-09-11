@@ -21,7 +21,7 @@ const List = ({history})=>{
 
   const getEvents = () => {
     fetch(
-      `${BASE_URL}/events?fields=dates,images,description,id,title,short_title,place&lang=ru&location=nsk`
+      `${BASE_URL}/events?fields=dates,images,description,id,title,short_title,place&expand=place&lang=ru&location=nsk`
     ).then(async response => {
       if (response.status !== 200) {
         return;
@@ -52,7 +52,7 @@ return (
      name ={event.short_title} key={event.id} 
      description = {event.description} 
      image={event.images[0].image}
-      placeId={event.place.id } 
+      placeName={event.place.title } 
       id={event.id}  onItemSelected={(itemId)=>{
       history.push(`${itemId}`)
       }}/>

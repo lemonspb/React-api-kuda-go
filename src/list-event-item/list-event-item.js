@@ -1,33 +1,10 @@
 import React,{ useEffect, useState } from 'react';
 import './list-event-item.css';
 
-const ListItem = ({name,description,image, placeId,id, onItemSelected})=>{
+const ListItem = ({name,description,image, placeName,id, onItemSelected})=>{
 
 
 
-  const BASE_URL = "https://kudago.com/public-api/v1.4/";
-
-    useEffect( () => {
-        getPlace();
-      
-        
-      
-      
-    }, [] );
-  
-    const  [ place, setPlace] = useState('');
-    const getPlace = async()  => {
-     await fetch(
-        `${BASE_URL}/places/${placeId}/?fields=title`
-      ).then(async response => {
-        if (response.status !== 200) {
-          return;
-        }
-        const data = await response.json();
-         console.log(data.title)
-        setPlace(data.title);
-      });
-    };
 
 return (
 <div className='list-item' onClick={() => onItemSelected(id)}>
@@ -38,7 +15,7 @@ return (
 
     <div className='list-item__img'><img src = {image} alt=''/></div>
     
-    <div className='list-item__place'><span>Место: </span>{place}</div>
+    <div className='list-item__place'><span>Место: </span>{placeName}</div>
 
     </div>
 )

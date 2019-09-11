@@ -21,7 +21,7 @@ const ListPlace = ()=>{
 
   const getPlace = () => {
     fetch(
-      `${BASE_URL}/places?fields=id,title,address,images,description,place&lang=ru&location=nsk`
+      `${BASE_URL}/places?fields=id,title,address,images,description&expand=place&lang=ru&location=nsk`
     ).then(async response => {
       if (response.status !== 200) {
         return;
