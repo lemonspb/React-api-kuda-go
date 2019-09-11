@@ -4,6 +4,7 @@ import Spinner from '../spinner'
 import GoogleMapReact from 'google-map-react';
 
 const CartEvent = ({selectId})=>{
+    const KEY_MAP = 'AIzaSyCU9MTC1valF9nap3DwKA3OBSyTCukvolc';
     const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     useEffect(() => {
@@ -42,6 +43,13 @@ return (
     <div className='cart-item__img'><img src = {idEvents.images} alt=''/></div>
     <div className='cart-item__text' dangerouslySetInnerHTML={{__html:idEvents.body_text}}></div>
     <div className = 'cart-item__age'><span>Возрастное ограничение: </span> {idEvents.age_restriction? idEvents.age_restriction : 'отсутсвует'}</div>
+    <div style={{ height: '100vh', width: '100%' }}>
+    <GoogleMapReact
+          bootstrapURLKeys={{ key: KEY_MAP }}
+          defaultCenter={{lat: 59.95, lng: 30.33}}
+          defaultZoom={ 14 }
+        />
+    </div>    
     </div>
 
     )
