@@ -1,12 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|Source+Sans+Pro:300i,400,400i,600,600i,700&display=swap&subset=cyrillic,cyrillic-ext');
+
+
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
+  font-family: 'PT Serif', serif;
+  margin: 20px;
   }
   
  .title{
+  font-family: 'Source Sans Pro', sans-serif;
+
    text-align: center;
  }
 
  .slick-list{
    text-align: center;
  }
+
+
+.flex{
+  display: flex;
+}
+
+.row{
+  display: flex;
+
+}
+.tomato{
+  color: tomato;
+}
+.contacts{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+.contacts__item{
+  margin-bottom: 10px;
+}
+
+.list-wrap{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-more{
+  box-sizing: border-box;
+  padding: 10px 30px;
+ margin: 0 auto;
+ 
+}

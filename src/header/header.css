@@ -4,7 +4,7 @@
     padding: 30px;
 display: flex;
 align-items: center;
-justify-content: center;    
+justify-content: space-around;    
 -webkit-box-shadow: 3px 6px 31px -8px rgba(28,28,28,1);
 -moz-box-shadow: 3px 6px 31px -8px rgba(28,28,28,1);
 box-shadow: 3px 6px 31px -8px rgba(28,28,28,1);
