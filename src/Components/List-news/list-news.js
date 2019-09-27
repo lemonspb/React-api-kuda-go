@@ -52,6 +52,7 @@ const pageNumber = pages => {
           <div className="top-header">
         <Header as="h1">Новости</Header>
         <Paginations pageNumber={pageNumber} />
+
       </div>
   <Item.Group>
 {news.map((item)=>(
@@ -60,7 +61,8 @@ const pageNumber = pages => {
 ))}
   
   </Item.Group>
-    
+                    <Paginations pageNumber={pageNumber} />
+
     </React.Fragment>
   );
 };

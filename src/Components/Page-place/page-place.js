@@ -6,6 +6,8 @@ import GoogleMap from "../GoogleMap";
 import AccordionCard from '../Accordion'
 import { withRouter } from "react-router-dom";
 const PagePlace = ({ indexPlace, history }) => {
+
+
   const settingsSlider = {
     arrow:true,
     dots: true,
@@ -77,6 +79,8 @@ const PagePlace = ({ indexPlace, history }) => {
           center={detailPlaces.coords}
           title={detailPlaces.title}
           address={detailPlaces.address}
+          metro = {detailPlaces.subway}
+          image = {detailPlaces.images}
         />
         </div>
       </div>

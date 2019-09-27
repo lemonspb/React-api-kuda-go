@@ -21,14 +21,13 @@ const ListPlaces = ({ history, page }) => {
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     fetch(
-      `${BASE_URL}/places?fields=id,title,address,images,categories,is_closed,coords,description&expand=place&lang=ru&location=${slugCity}&text_format
+      `${BASE_URL}/places?fields=id,title,address,images,categories,is_closed,coords,description,subway&expand=place&lang=ru&location=${slugCity}&text_format
 =text&page=${pages}`
     ).then(async response => {
       if (response.status !== 200) {
         return;
       }
       const data = await response.json();
-console.log(data.results)
       setPlace(data.results);
       setLoader(false);
     });
@@ -67,6 +66,7 @@ console.log(data.results)
       <div className="top-header">
         <Header as="h1">Места</Header>
         <Paginations  pageNumber={pageNumber} />
+
       </div>
 
       <Card.Group centered stackable className="card-group">
@@ -80,6 +80,7 @@ console.log(data.results)
             address={place.address}
             title={place.title}
             description={place.description}
+            
           />
         ))}
       </Card.Group>
@@ -88,6 +89,8 @@ console.log(data.results)
         closeModal={closeModal}
         modalMapData={modalMapData}
       />
+   <Paginations  pageNumber={pageNumber} />
+
     </React.Fragment>
   );
 };

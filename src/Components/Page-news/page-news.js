@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Loader,Button, } from "semantic-ui-react";
-import { withRouter,Link } from "react-router-dom";
+import { Loader,Button,Icon } from "semantic-ui-react";
+import { withRouter } from "react-router-dom";
 import Services from  '../../Services/services'
 import Slider from "react-slick";
 
@@ -43,7 +43,6 @@ const  services = new Services();
       setDetailNews(data);
       setLoaing(false);
 
-      console.log(data);
     });
   };
 
@@ -58,7 +57,11 @@ const  services = new Services();
 
   return (
     <React.Fragment>
-    <Button onClick={()=>{history.goBack()}}>Назад</Button>
+     <Button primary animated='fade' onClick={()=>{history.goBack()}}>
+      <Button.Content visible>
+      Вернуться назад</Button.Content>
+      <Button.Content hidden><Icon name='arrow left'></Icon></Button.Content>
+    </Button>
 
       <div className="page">
         <h2 className="page__header">{detailNews.title}</h2>
@@ -72,7 +75,8 @@ const  services = new Services();
 
 
              <div className="page__description">{detailNews.body_text}</div>
-{services.timeConverter(detailNews.publication_date)}
+             <div className='page__publication'>
+             <span>Дата публикации: </span>{services.timeConverter(detailNews.publication_date)}</div>
         </div>
     </React.Fragment>
   );

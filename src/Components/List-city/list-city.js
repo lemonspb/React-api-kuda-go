@@ -43,10 +43,10 @@ useEffect(() => {
   
     <List className='city-list'>   
 {cityList.map(({name, slug})=>(
-  <List.Item as='a' key={slug}  className='city-list__item'>
+     <List.Item as='a' key={slug}  className='city-list__item'>
       <List.Icon name='marker' />
       <List.Content>
-      <Link to='/places/page/1'  onClick={()=>{getSityNameSlug(slug, name)}}>
+      <Link to={`${slug}/news/page/1`}  onClick={()=>{getSityNameSlug(slug, name)}}>
 {name}
 </Link>
       </List.Content>

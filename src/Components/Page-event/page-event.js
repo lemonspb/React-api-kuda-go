@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Loader,Button, } from "semantic-ui-react";
+import { Loader,Button,Icon } from "semantic-ui-react";
 import Slider from "react-slick";
-import { withRouter } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 
-const PageEvent = ({ indexEvent, history }) => {
+const PageEvent = ({ indexEvent, history}) => {
   const settingsSlider = {
     arrow:true,
     dots: true,
@@ -15,14 +15,15 @@ const PageEvent = ({ indexEvent, history }) => {
     slidesToScroll: 1,
   };
 
-  const style = {
-    width: '50%',
-    height: '50vh'
-  }
+  
 
   const [loader, setLoaing] = useState(true);
 
+
+
   useEffect(() => {
+  
+
     getDetailEvent(indexEvent);
   }, [indexEvent]);
 
@@ -52,10 +53,19 @@ const PageEvent = ({ indexEvent, history }) => {
 
   return (
     <React.Fragment>
-    <Button onClick={()=>{history.goBack()}}> назад</Button>
+      <Button primary animated='fade' onClick={()=>{history.goBack()}}>
+      <Button.Content visible>
+      Вернуться назад</Button.Content>
+      <Button.Content hidden><Icon name='arrow left'></Icon></Button.Content>
+    </Button>
+    
       <div className="page">
-        <h2 className="page__header">{detailEvent.title}</h2>
-{detailEvent.images?<Slider {...settingsSlider} className='page__slider'>
+         
+
+       
+        <h2 className="page__header">{detailEvent.title}<span className='page__meta'> ({detailEvent.age_restriction})</span></h2>
+        <div className='page__price'><span>цена: </span>{detailEvent.price || 'бесплатно'}</div>
+        {detailEvent.images?<Slider {...settingsSlider} className='page__slider'>
           {detailEvent.images.map((img, i) => (
             <div className="page__img page-img " key={i}> 
               <img src={img.image} className="page-img__image" alt="" />

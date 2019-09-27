@@ -28,7 +28,9 @@ const CardPlace = ({image,address,title,description,isclosed,id,openMap}) => {
     <Image src={image} wrapped ui={false} />
     
     <Card.Content>
-      <Link to={`/place/${id}`} className='card-place__header' >{title}</Link>
+   <Card.Header>
+      <Link to={`/place/${id}`} className='card-place__header link-color' >{title}</Link>
+      </Card.Header>
       <Card.Meta>
         <span className='close'>{isclosed?'Закрыто':'Открыто'}</span>
       </Card.Meta>
@@ -36,9 +38,9 @@ const CardPlace = ({image,address,title,description,isclosed,id,openMap}) => {
        {description}
       </Card.Description>
     </Card.Content>
-    <Card.Content extra onClick={()=> openMap(id)}>
+    <Card.Content extra onClick={()=> openMap(id)} >
         <Icon name='map marker alternate' />
-      {address}
+     <span className='link-color'> {address} </span>
     </Card.Content>
   </Card>
   )

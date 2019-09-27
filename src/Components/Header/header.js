@@ -1,43 +1,79 @@
-import React from 'react';
-import { Menu } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
-import './header.scss'
- const  Header = () =>{
-    let cityName = JSON.parse(localStorage.getItem("storageCity"))   
-return (
-        <Menu pointing secondary className='header-nav'>
-          
-          <NavLink to='/events/page/1' className='header-nav__item'>
-          <Menu.Item
-          name='События'
-       />
-          
-          </NavLink>
-          
-         <NavLink to='/places/page/1' className='header-nav__item'>
-         <Menu.Item
-          name='Места'
-       />
-         </NavLink>
-         <NavLink to='/news/page/1' className='header-nav__item'>
-         <Menu.Item
-          name='Новости'
-       />
-           </NavLink>
-         <NavLink to='/films/' className='header-nav__item'>
-         <Menu.Item
-          name='Фильмы'
-       />
-                </NavLink>  
+    import React,{useState,useEffect} from 'react';
+    import { Menu, Icon } from 'semantic-ui-react';
+    import { NavLink,withRouter } from 'react-router-dom';
+    import './header.scss'
 
-       <Menu.Menu position='right' className='header-city'>
-       <div header-nav__item>Город: <NavLink to='/'>{cityName.name}</NavLink></div>
 
-          </Menu.Menu>
+    const  Header = ({history}) =>{
+        let cityName = JSON.parse(localStorage.getItem("storageCity"))   
+
+        useEffect(()=>{handleItemClick(history.location.pathname)},[history.location.pathname])
+
+        const [activeItem, setActiveItem] = useState('')
+
+        const handleItemClick = (item) => {
+        if(item.includes('events')){
+            setActiveItem('События')
+        }
+        if(item.includes('places')){
+            setActiveItem('Места')
+        }
+        if(item.includes('news')){
+            setActiveItem('Новости')
+        }
+        if(item.includes('films')){
+            setActiveItem('Фильмы')
+        }
+        }
+
+
+
+    return (
+            <Menu  stackable pointing secondary className='header-nav'>
+
+            <NavLink   to='/events/page/1'>
+
+            <Menu.Item 
+            className='header-nav__item'
+            color='red'
+            active={activeItem === 'События'}
+            name='События' />
+            
+            </NavLink>
+            
+            <NavLink to='/places/page/1' >
+            <Menu.Item
+                    className='header-nav__item'
+            color='red'
+            active={activeItem === 'Места'}
+            name='Места'/>
+
+            </NavLink>
+
+            <NavLink to='/news/page/1'  >
+            <Menu.Item
+            className='header-nav__item' 
+            color='red'
+            name='Новости'
+            active={activeItem === 'Новости'}/>
+            
+            </NavLink>
+
+            <NavLink to='/films/page/1'>
+            <Menu.Item
+            className='header-nav__item'
+            color='red'
+            name='Фильмы'
+            active={activeItem === 'Фильмы'}/>
+
+            </NavLink>  
+        <Menu.Menu position='right' className='header-city'>
         
-        </Menu>
+        <div className='header-nav__item'><Icon name='map marker alternate' />Город:&nbsp;<NavLink to='/' className='header-nav__link'>{cityName.name}</NavLink></div> </Menu.Menu>
+            
+            </Menu>
 
-    )
-  }
+        )
+    }
 
-  export default Header
+    export default withRouter(Header)

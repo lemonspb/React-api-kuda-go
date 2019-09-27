@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Header,  Modal } from 'semantic-ui-react'
+import {  Modal } from 'semantic-ui-react'
 import GoogleMap from "../GoogleMap";
 
 
@@ -17,12 +17,15 @@ const ModalMap = ({openModal,modalMapData,closeModal}) => {
       closeModal(false);
     }}
     >
-      <Modal.Header>{modalMapData.title}({modalMapData.address})</Modal.Header>
+      <Modal.Header>{modalMapData.title} <br/>({modalMapData.address})</Modal.Header>
       <Modal.Content >
           <GoogleMap
            style={style}
+           title={modalMapData.title}
            center={modalMapData.coords}
-           address={modalMapData.address} 
+           address={modalMapData.address}
+           image={modalMapData.images} 
+           metro={modalMapData.subway} 
           />
       </Modal.Content>
     </Modal>
