@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Loader,Button, } from "semantic-ui-react";
+import { Loader,Button, Icon} from "semantic-ui-react";
 import Slider from "react-slick";
 import "./page-place.scss";
 import GoogleMap from "../GoogleMap";
@@ -57,7 +57,12 @@ const PagePlace = ({ indexPlace, history }) => {
 
   return (
     <React.Fragment>
-    <Button onClick={()=>{history.goBack()}}> назад</Button>
+    
+        <Button primary animated='fade' onClick={()=>{history.goBack()}}>
+      <Button.Content visible>
+      Вернуться назад</Button.Content>
+      <Button.Content hidden><Icon name='arrow left'></Icon></Button.Content>
+    </Button>
       <div className="page">
         <h2 className="page__header">{detailPlaces.title}</h2>
 {detailPlaces.images?<Slider {...settingsSlider} className='page__slider'>

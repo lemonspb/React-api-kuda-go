@@ -4,7 +4,7 @@ import './list-city.scss'
 import { Header,List } from 'semantic-ui-react'
 import { withRouter } from "react-router-dom";
 
-const ListCity = ({getSityNameSlug}) => {
+const ListCity = ({getSityNameSlug,history}) => {
   
 useEffect(() => {
         getCityList()       
@@ -19,7 +19,7 @@ useEffect(() => {
     const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
       fetch(
-        `https://cors-anywhere.herokuapp.com/${BASE_URL}/locations/?lang=ru`
+        `${BASE_URL}/locations/?lang=ru`
       ).then(async response => {
         if (response.status !== 200) {
           return;
@@ -28,7 +28,6 @@ useEffect(() => {
   
        setCityList(data);
   
-        console.log(data)
       });
   
   
@@ -46,7 +45,7 @@ useEffect(() => {
      <List.Item as='a' key={slug}  className='city-list__item'>
       <List.Icon name='marker' />
       <List.Content>
-      <Link to={`${slug}/news/page/1`}  onClick={()=>{getSityNameSlug(slug, name)}}>
+      <Link to={`/news/page/1`}  onClick={()=>{getSityNameSlug(slug, name)}}>
 {name}
 </Link>
       </List.Content>

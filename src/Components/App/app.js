@@ -1,11 +1,10 @@
-import  React,{useState} from 'react';
+import  React from 'react';
 import  ListPlaces from '../List-places' 
 import  Header from '../Header'
 import  PagePlace from '../Page-place';
 import  PageNews from '../Page-news';
 import  PageEvent from '../Page-event';
 import PageFilm  from '../Page-film';
-
 import  ListCity from '../List-city';
 import  ListNews from '../List-news';
 import  ListFilms from '../List-films'
@@ -15,26 +14,25 @@ import { BrowserRouter, Route,Switch } from 'react-router-dom';
 
 const App = ()=>{
   
-const [newCity, setNewCity] = useState()
-    let cityStorage = JSON.parse(localStorage.getItem("storageCity")) || {};
 
-  function saveCity( slug, name ) {
-    let cityStorage = JSON.parse(localStorage.getItem("storageCity")) || {};
-    cityStorage = {slug,name};
-    localStorage.setItem("storageCity", JSON.stringify(cityStorage));
+
+ 
+
+   function saveCity( slug, name ) {
+  localStorage.setItem("storageCity", JSON.stringify({ slug, name }));
 
   }
   const getSityNameSlug = (slug, city)=>{
     saveCity(slug,city)
-    setNewCity(city)
+
    }
 
 
 
 return (
- <BrowserRouter  basename={`/${cityStorage.slug}`}>    
+ <BrowserRouter>    
 <React.Fragment>
-{cityStorage.slug?<Header/>:null}
+<Header/>
 
 <Container className='container'>
 <Switch>
