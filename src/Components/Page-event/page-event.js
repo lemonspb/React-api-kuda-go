@@ -31,8 +31,9 @@ const PageEvent = ({ indexEvent, history}) => {
 
   const getDetailEvent = index => {
     const BASE_URL = "https://kudago.com/public-api/v1.4/"
+    const NO_CORS  = "https://cors-anywhere.herokuapp.com/";
 
-    fetch(`${BASE_URL}events/${index}/?text_format=text`).then(async response => {
+    fetch(`${NO_CORS}${BASE_URL}events/${index}/?text_format=text`).then(async response => {
       if (response.status !== 200) {
         return;
       }

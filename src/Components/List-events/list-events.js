@@ -16,8 +16,10 @@ const ListEvents = ({ history, page,indeArray}) => {
 
   const getEvents = (slugCity,pages,actualDate) => {
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
+  const NO_CORS  = "https://cors-anywhere.herokuapp.com/";
+
     fetch(
-      `${BASE_URL}/events?&fields=dates,images,description,id,title,short_title,place&expand=place,dates&lang=ru&location=${slugCity}&page_size=10&page=${pages}&text_format=text&actual_since=${actualDate.getTime().toString().slice(0,10)}`
+      `${NO_CORS}${BASE_URL}/events?&fields=dates,images,description,id,title,short_title,place&expand=place,dates&lang=ru&location=${slugCity}&page_size=10&page=${pages}&text_format=text&actual_since=${actualDate.getTime().toString().slice(0,10)}`
     ).then(async response => {
       if (response.status !== 200) {
         return;

@@ -19,7 +19,7 @@ useEffect(() => {
     const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
       fetch(
-        `${BASE_URL}/locations/?lang=ru`
+        `https://cors-anywhere.herokuapp.com/${BASE_URL}/locations/?lang=ru`
       ).then(async response => {
         if (response.status !== 200) {
           return;

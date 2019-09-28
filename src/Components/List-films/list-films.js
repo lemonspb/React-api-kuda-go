@@ -14,9 +14,10 @@ const ListFilms = ({ history, page}) => {
 
   const getFilms = (slugCity) => {
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
+  const NO_CORS  = "https://cors-anywhere.herokuapp.com/";
 
     fetch(
-      `${BASE_URL}/movies?&fields=description,title,poster,imdb_rating,id&lang=ru&text_format=text&location=${slugCity}&page=1`
+      `${NO_CORS}${BASE_URL}/movies?&fields=description,title,poster,imdb_rating,id&lang=ru&text_format=text&location=${slugCity}&page=1`
     ).then(async response => {
       if (response.status !== 200) {
         return;

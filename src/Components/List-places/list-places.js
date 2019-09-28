@@ -19,9 +19,10 @@ const ListPlaces = ({ history, page }) => {
 
   const getPlace = (slugCity, pages) => {
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
+  const NO_CORS  = "https://cors-anywhere.herokuapp.com/";
 
     fetch(
-      `${BASE_URL}/places?fields=id,title,address,images,categories,is_closed,coords,description,subway&expand=place&lang=ru&location=${slugCity}&text_format
+      `${NO_CORS}${BASE_URL}/places?fields=id,title,address,images,categories,is_closed,coords,description,subway&expand=place&lang=ru&location=${slugCity}&text_format
 =text&page=${pages}`
     ).then(async response => {
       if (response.status !== 200) {

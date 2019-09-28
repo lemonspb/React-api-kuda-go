@@ -17,7 +17,7 @@ const ListNews = ({ history, page,}) => {
   const BASE_URL = "https://kudago.com/public-api/v1.4/";
 
     fetch(
-      `${BASE_URL}/news?lang=ru&fields=id,publication_date,title,slug,place,description,body_text,images&expand=publication_date&order_by=&text_format=text&ids=&location=${slugCity}&actual_only=true
+      `https://cors-anywhere.herokuapp.com/${BASE_URL}/news?lang=ru&fields=id,publication_date,title,slug,place,description,body_text,images&expand=publication_date&order_by=&text_format=text&ids=&location=${slugCity}&actual_only=true
 =text&page=${pages}`
     ).then(async response => {
       if (response.status !== 200) {

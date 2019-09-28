@@ -33,9 +33,10 @@ const  services = new Services();
   const [detailNews, setDetailNews] = useState([]);
 
   const getDetailNews = index => {
+    const NO_CORS  = "https://cors-anywhere.herokuapp.com/"
     const BASE_URL = "https://kudago.com/public-api/v1.4/"
 
-    fetch(`${BASE_URL}/news/${index}/?text_format=text`).then(async response => {
+    fetch(`${NO_CORS}${BASE_URL}/news/${index}/?text_format=text`).then(async response => {
       if (response.status !== 200) {
         return;
       }
