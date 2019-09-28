@@ -33,7 +33,7 @@ const App = ()=>{
 return (
  <BrowserRouter>    
 <React.Fragment>
-{cityStorage?<Header/>:null}
+{cityStorage.slug?<Header/>:null}
 
 <Container className='container'>
 <Switch>
