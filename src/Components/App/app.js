@@ -18,6 +18,7 @@ const App = ()=>{
 
  
 
+  let cityStorage = JSON.parse(localStorage.getItem("storageCity")) || {};
    function saveCity( slug, name ) {
   localStorage.setItem("storageCity", JSON.stringify({ slug, name }));
 
@@ -32,7 +33,7 @@ const App = ()=>{
 return (
  <BrowserRouter>    
 <React.Fragment>
-<Header/>
+{cityStorage?<Header/>:null}
 
 <Container className='container'>
 <Switch>
@@ -71,5 +72,6 @@ export default App;
 
 
   
+
 
 
