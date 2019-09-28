@@ -17,9 +17,10 @@ useEffect(() => {
     const getCityList = () => {
     
     const BASE_URL = "https://kudago.com/public-api/v1.4/";
+  const NO_CORS  = "https://cors-anywhere.herokuapp.com/"
 
       fetch(
-        `${BASE_URL}/locations/?lang=ru`
+        `${NO_CORS}${BASE_URL}/locations/?lang=ru`
       ).then(async response => {
         if (response.status !== 200) {
           return;
