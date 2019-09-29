@@ -4,8 +4,8 @@
     import './header.scss'
 
 
-    const  Header = ({history}) =>{
-        let cityName = JSON.parse(localStorage.getItem("storageCity"))   
+    const  Header = ({history,cityName}) =>{
+   let cityStorage = JSON.parse(localStorage.getItem("storageCity")) || {};
 
         useEffect(()=>{handleItemClick(history.location.pathname)},[history.location.pathname])
 
@@ -69,7 +69,7 @@
             </NavLink>  
         <Menu.Menu position='right' className='header-city'>
         
-        <div className='header-nav__item'><Icon name='map marker alternate' />Город:&nbsp;<NavLink to='/' className='header-nav__link'>{cityName.name}</NavLink></div> </Menu.Menu>
+        <div className='header-nav__item'><Icon name='map marker alternate' />Город:&nbsp;<NavLink to='/' className='header-nav__link'>{cityStorage? cityStorage.name: 'fdfd' }</NavLink></div> </Menu.Menu>
             
             </Menu>
 
