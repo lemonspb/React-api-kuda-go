@@ -1,4 +1,4 @@
-import  React from 'react';
+import  React,{useState,useEffect} from 'react';
 import  ListPlaces from '../List-places' 
 import  Header from '../Header'
 import  PagePlace from '../Page-place';
@@ -12,30 +12,31 @@ import  ListEvents from '../List-events'
 import { Container } from 'semantic-ui-react';
 import { BrowserRouter, Route,Switch } from 'react-router-dom';
 
-const App = ()=>{
-  
+const App = ({history})=>{
 
-
+  const [city, setCity] = useState('')
+ 
+  const cityName = JSON.parse(localStorage.getItem("storageCity")) 
  
 
-  let cityName = JSON.parse(localStorage.getItem("storageCity"));
    function saveCity( slug, name ) {
+     
   localStorage.setItem("storageCity", JSON.stringify({ slug, name }));
 
   }
+  
   const getSityNameSlug = (slug, city)=>{
     saveCity(slug,city)
-
+    setCity(city)
    }
 
 
 
 return (
  <BrowserRouter>    
-<div>
+<React.Fragment>
+
 {cityName?<Header/>:null}
-
-
 <Container className='container'>
 <Switch>
 <Route  path='/place/:id' exact render={({match})=>  <PagePlace indexPlace={match.params.id}  /> }/> 
@@ -60,7 +61,7 @@ return (
 
 </Container>
 
-</div>
+</React.Fragment>
  </BrowserRouter>
 
 )    
@@ -68,11 +69,4 @@ return (
 
 
 export default App;
-
-
-
-
-  
-
-
 
