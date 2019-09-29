@@ -18,7 +18,7 @@ const App = ()=>{
 
  
 
-  let cityStorage = JSON.parse(localStorage.getItem("storageCity")) || {};
+  let cityName = JSON.parse(localStorage.getItem("storageCity"));
    function saveCity( slug, name ) {
   localStorage.setItem("storageCity", JSON.stringify({ slug, name }));
 
@@ -33,7 +33,8 @@ const App = ()=>{
 return (
  <BrowserRouter>    
 <div>
-{cityStorage.slug?<Header/>:null}
+{cityName?<Header/>:null}
+
 
 <Container className='container'>
 <Switch>
